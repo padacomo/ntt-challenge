@@ -1,0 +1,1 @@
+git remote add origin git@github-padacomo:padacomo/ntt-challenge.git
