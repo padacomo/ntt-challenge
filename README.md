@@ -41,6 +41,10 @@ Você pode [acessar o código fonte do projeto](https://github.com/padacomo/ntt-
 
 Este projeto contém a parte do Backend do sistema.
 
+## 💻 Scripts da aplicação
+
+ - npm run start:dev
+ - npm run test (teste unitários - WIP)
 ### Pré-requisitos
  - docker
  - nest
