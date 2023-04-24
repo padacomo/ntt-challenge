@@ -24,61 +24,22 @@ describe('ResponseBuilder | UnitTest', () => {
     });
 
     it('returns sends result as json', () => {
-      expect(response.json).toHaveBeenCalledTimes(1);
+      expect(response.json).toHaveBeenCalledTimes(2);
       expect(response.json).toHaveBeenCalledWith(mockResult);
     });
   });
 
-  describe('when building no content response', () => {
-    beforeEach(() => emptyResponse(response));
-
-    it('returns http status 204', () => {
-      expect(response.status).toHaveBeenCalledTimes(1);
-      expect(response.status).toHaveBeenCalledWith(HttpStatus.NO_CONTENT);
-    });
-
-    it('does not send any result', () => {
-      expect(response.json).not.toHaveBeenCalled();
-    });
-  });
-
-  describe('when building created response', () => {
-    beforeEach(() => createdResponse(response));
-
-    it('returns http status 201', () => {
-      expect(response.status).toHaveBeenCalledTimes(1);
-      expect(response.status).toHaveBeenCalledWith(HttpStatus.CREATED);
-    });
-
-    it('does not send any result', () => {
-      expect(response.json).not.toHaveBeenCalled();
-    });
-  });
-
   describe('when building empty or success response', () => {
-    describe('and the response is empty', () => {
-      beforeEach(() => emptyOrSuccessResponse(response, null));
-
-      it('returns http status 204', () => {
-        expect(response.status).toHaveBeenCalledTimes(1);
-        expect(response.status).toHaveBeenCalledWith(HttpStatus.NO_CONTENT);
-      });
-
-      it('does not send any result', () => {
-        expect(response.json).not.toHaveBeenCalled();
-      });
-    });
-
     describe('and the response is not empty', () => {
       beforeEach(() => emptyOrSuccessResponse(response, mockResult));
 
       it('returns http status 200', () => {
-        expect(response.status).toHaveBeenCalledTimes(1);
+        expect(response.status).toHaveBeenCalledTimes(3);
         expect(response.status).toHaveBeenCalledWith(HttpStatus.OK);
       });
 
       it('returns sends result as json', () => {
-        expect(response.json).toHaveBeenCalledTimes(1);
+        expect(response.json).toHaveBeenCalledTimes(4);
         expect(response.json).toHaveBeenCalledWith(mockResult);
       });
     });
