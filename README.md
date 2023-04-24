@@ -34,7 +34,7 @@ Você pode [acessar o código fonte do projeto](https://github.com/padacomo/ntt-
 
 - Clone o projeto 
 - Instale as dependências 
-- DB: rode o comando 
+- DB: rode o comando docker-compose up
 
 
 ## 🚀 Como executar o projeto
@@ -42,3 +42,9 @@ Você pode [acessar o código fonte do projeto](https://github.com/padacomo/ntt-
 Este projeto contém a parte do Backend do sistema.
 
 ### Pré-requisitos
+ - docker
+ - nest
+ - TS
+ - Node
+ - Gerenciado de dependências
+ - recomenda-se insômnia para testar os endpoints, pois há a collection exportada
