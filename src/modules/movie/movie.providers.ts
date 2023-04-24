@@ -11,6 +11,8 @@ import { IGetFavoriteMovieByIdUseCaseName } from './use-cases/get-favorite-movie
 import { GetFavoriteMovieByIdUseCase } from './use-cases/get-favorite-movie-by-id-use-case';
 import { IGetAllFavoriteMoviesCaseName } from './use-cases/get-all-favorite-movies-use-case.interface';
 import { GetAllFavoriteMoiviesUseCase } from './use-cases/get-all-favorite-movies-use-case';
+import { ICheckIsFavoriteMovieUseCaseName } from './use-cases/check-is-favorite-movie-use-case.interface';
+import { CheckIsFavoriteMovieUseCase } from './use-cases/check-is-favorite-movie-use-case';
 
 export const services: Provider<any>[] = [
   {
@@ -39,6 +41,10 @@ export const useCases: Provider<any>[] = [
   {
     provide: IGetAllFavoriteMoviesCaseName,
     useClass: GetAllFavoriteMoiviesUseCase,
+  },
+  {
+    provide: ICheckIsFavoriteMovieUseCaseName,
+    useClass: CheckIsFavoriteMovieUseCase,
   },
 ];
 export const movieProviders: Provider<any>[] = [...services, ...useCases];

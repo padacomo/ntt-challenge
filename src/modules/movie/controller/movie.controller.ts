@@ -41,6 +41,11 @@ import {
   IGetAllFavoriteMoviesUseCase,
 } from '../use-cases/get-all-favorite-movies-use-case.interface';
 import { GetAllFavoriteMoiviesRequest } from './contracts/get-all-favorite-movies';
+import { CheckIsFavoriteMovieRequest } from './contracts/check-is-favorite-movie';
+import {
+  ICheckIsFavoriteMovieUseCase,
+  ICheckIsFavoriteMovieUseCaseName,
+} from '../use-cases/check-is-favorite-movie-use-case.interface';
 
 @ApiTags(SWAGGER_TITLE)
 @Controller({
@@ -51,6 +56,9 @@ export class MovieController {
   constructor(
     @Inject(IGetMovieByTitleUseCaseName)
     private readonly getMovieByTitleUseCase: IGetMovieByTitleUseCase,
+
+    @Inject(ICheckIsFavoriteMovieUseCaseName)
+    private readonly checkIsFavoriteUseCase: ICheckIsFavoriteMovieUseCase,
 
     @Inject(ICreateFavoriteMovieUseCaseName)
     private readonly createFavoriteMovieUseCase: ICreateFavoriteMovieUseCase,
@@ -69,6 +77,16 @@ export class MovieController {
     @Res() response: Response,
   ) {
     const result = await this.getMovieByTitleUseCase.execute(query);
+    emptyOrSuccessResponse(response, result);
+  }
+
+  @Get(PATH_FAVORITE_MOVIE)
+  @Version(API_V1)
+  async checkIsFavoriteMovie(
+    @Query() query: CheckIsFavoriteMovieRequest,
+    @Res() response: Response,
+  ) {
+    const result = await this.checkIsFavoriteUseCase.execute(query);
     emptyOrSuccessResponse(response, result);
   }
 

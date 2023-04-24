@@ -1,5 +1,9 @@
 import { IGetAllMoviesRequest } from 'src/commons/paginate';
-import { IGetMovieByTitleRequestDto } from '../dto';
+import {
+  ICheckIsFavoriteMovieRequestDto,
+  ICheckIsFavoriteMovieResponseDto,
+  IGetMovieByTitleRequestDto,
+} from '../dto';
 import { ICreateFavoriteMovieRequestDto } from '../dto/create-favorite-movie.request.dto';
 import { ICreateFavoriteMovieResponseDto } from '../dto/create-favorite-movie.response.dtos';
 import { IGetFavoriteMovieByIdResponseDto } from '../dto/get-favorite-movie-by-id.response.dto';
@@ -18,6 +22,9 @@ export interface IMovieService {
   getAllFavoriteMovies(
     params: IGetAllMoviesRequest,
   ): Promise<PaginationResponseType<FavoriteMovie>>;
+  checkIsFavoriteMovie(
+    data: ICheckIsFavoriteMovieRequestDto,
+  ): Promise<ICheckIsFavoriteMovieResponseDto>;
 }
 
 export const IMovieServiceName = 'IMovieService';

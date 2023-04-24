@@ -1,5 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IGetMovieByTitleRequestDto } from '../dto';
+import {
+  ICheckIsFavoriteMovieRequestDto,
+  ICheckIsFavoriteMovieResponseDto,
+  IGetMovieByTitleRequestDto,
+} from '../dto';
 import { IGetMovieByTitleResponseDto } from '../dto/get-movie-by-title.response.dto';
 import { GetMovieByTitleError } from '../error/get-movie-by-title.error';
 import { IMovieService } from './movie.service.interface';
@@ -75,5 +79,22 @@ export class MovieService implements IMovieService {
       currentPerPage: perPage,
       items,
     };
+  }
+
+  async checkIsFavoriteMovie(
+    data: ICheckIsFavoriteMovieRequestDto,
+  ): Promise<ICheckIsFavoriteMovieResponseDto> {
+    let favorite = false;
+    const existsMovie = await this.repository.findOne({
+      where: { external_id: data.externalId },
+    });
+    if (existsMovie) {
+      favorite = true;
+      return {
+        favorite,
+        movie: existsMovie,
+      };
+    }
+    return { favorite };
   }
 }
