@@ -34,7 +34,7 @@ Você pode [acessar o código fonte do projeto](https://github.com/padacomo/ntt-
 
 - Clone o projeto 
 - Instale as dependências 
-- DB: rode o comando docker-compose up
+- DB: rode o comando docker-compose up a variáveis do banco estão settadas na conexão, não no arquivo .env, em função de ser apenas um teste.
 
 
 ## 🚀 Como executar o projeto
